@@ -8,5 +8,5 @@ urlpatterns = [
     path('showEmployeeForm', views.showEmployeeForm, name="showEmployeeForm"),
     path('createEmployee', views.createEmployee, name="createEmployee"),
     path('edit/<int:id>/', views.edit, name="edit"),
-    path('editEmployee/<int:id>/', views.editEmployee, name="editEmployee"),
+    path('editEmployee/<int:id>/', views.editEmployee, name="editEmployee")
 ]

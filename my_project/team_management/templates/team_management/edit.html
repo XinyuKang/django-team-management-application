@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible content="IE=edge">
+    <meta http-equiv="X-UA-Compatible content=" IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Document</title>
     {% load static %}
@@ -13,11 +14,11 @@
 <body>
 
 
- 
+
     <form action="{% url 'edit' id=employee.id %}" method="POST">
         {% csrf_token %}
         <center>
-        <h1>Edit a team member</h1>
+            <h1>Edit a team member</h1>
 
             <div style="margin: 10px auto; width:50%">
                 <label>First Name</label>
@@ -48,7 +49,13 @@
                 <input type="submit" value="update" style="background-color: cornflowerblue; color: white">
             </div>
 
+            <div style="margin: 10px auto; width:50%">
+                <input type="submit" name="action" value="delete"
+                    style="background-color: rgb(243, 137, 153); color: white">
+            </div>
+
         </center>
     </form>
 </body>
+
 </html>
