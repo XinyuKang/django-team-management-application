@@ -15,27 +15,24 @@
     <div class="main-container">
         <div class="row">
             
-            <h1>Team members  <span class="plus"><a href="showEmployeeForm" style="text-decoration:none" >
+            <h1>Team members  <span class="plus"><a href="showMember" style="text-decoration:none" >
                 <span>&#43;</span>
             </a></span> </h1>
-            <h3>You have {{ employees|length }} team members.</h3>
+            <h3>You have {{ members|length }} team members.</h3>
         </div>
     </div>
 
 
 
-    {% for employee in employees %}
+    {% for member in members %}
     <div class="container">
         <div class="row">
-            <!-- <span>{{ employee.id }}</span> -->
 
-            <a href="editEmployee/{{ employee.id }}" style="text-decoration:none">
-                <div class="name"> {{ employee.firstname }} {{ employee.lastname }} {% if employee.role == 'ADMIN' %} (admin) {% endif %}</div>
+            <a href="editMember/{{ member.id }}" style="text-decoration:none">
+                <div class="name"> {{ member.firstname }} {{ member.lastname }} {% if member.role == 'ADMIN' %} (admin) {% endif %}</div>
             </a>
-            <div class="detail">{{ employee.phone_number }}</div>
-            <div class="detail">{{ employee.email }}</div>
-            <!-- <span>{{ employee.salary }}</span> -->
-            <!-- <span><a href="editEmployee/{{ employee.id }}">Edit</a></span> -->
+            <div class="detail">{{ member.phone_number }}</div>
+            <div class="detail">{{ member.email }}</div>
 
         </div>
     </div>

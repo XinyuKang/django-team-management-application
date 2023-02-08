@@ -8,7 +8,7 @@ role_choices = (
         ("ADMIN", "Admin - Can delete members")
     )
     
-class Employee(models.Model):
+class Member(models.Model):
     # id, first name, last name, email, phone number, role: regular vs admin
     id = models.AutoField(primary_key=True) # make the id unique
     firstname = models.CharField(max_length=100)

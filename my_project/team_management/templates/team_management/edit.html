@@ -15,7 +15,7 @@
 
 
 
-    <form action="{% url 'edit' id=employee.id %}" method="POST">
+    <form action="{% url 'edit' id=member.id %}" method="POST">
         {% csrf_token %}
    
             <div class="main-container">
@@ -27,23 +27,23 @@
             <h4 class="sub-container">Info</h4>
             <div class="container">
                 <label>First Name: </label>
-                <input type="text" name="firstname" value="{{employee.firstname}}">
+                <input type="text" name="firstname" value="{{member.firstname}}">
             </div>
 
             <div class="container">
                 <label>Last Name: </label>
-                <input type="text" name="lastname" value="{{employee.lastname}}">
+                <input type="text" name="lastname" value="{{member.lastname}}">
             </div>
 
 
             <div class="container">
                 <label>Email: </label>
-                <input type="email" name="email" value="{{employee.email}}">
+                <input type="email" name="email" value="{{member.email}}">
             </div>
 
             <div class="container">
                 <label>Phone Number: </label>
-                <input type="phone" name="phone_number" value="{{employee.phone_number}}">
+                <input type="phone" name="phone_number" value="{{member.phone_number}}">
             </div>
 
 
@@ -51,8 +51,8 @@
             <div class="container">
                 <label>Role: </label>
                 <select name="role">
-                    <option value="REGULAR" {% if employee.role == 'REGULAR' %} selected {% endif %}>Regular - Can't delete members</option>
-                    <option value="ADMIN" {% if employee.role == 'ADMIN' %} selected {% endif %}>Admin - Can delete members</option>
+                    <option value="REGULAR" {% if member.role == 'REGULAR' %} selected {% endif %}>Regular - Can't delete members</option>
+                    <option value="ADMIN" {% if member.role == 'ADMIN' %} selected {% endif %}>Admin - Can delete members</option>
                 </select>
             </div>
 

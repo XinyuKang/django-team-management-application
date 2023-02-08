@@ -1,53 +1,48 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
 
-from .models import Employee
+from .models import Member
 # Create your views here.
 
 
 def index(request):
-    employees = Employee.objects.all()
-    return render(request, 'team_management/index.html', {'employees': employees})
+    members = Member.objects.all()
+    return render(request, 'team_management/index.html', {'members': members})
 
 
-def specific(request):
-    list1 = [1, 2, 3, 4]
-    return HttpResponse(list1)
+def showMember(request):
+    return render(request, "team_management/show.html")
 
 
-def showEmployeeForm(request):
-    return render(request, "team_management/employeeForm.html")
+def editMember(request, id):
+    member = get_object_or_404(Member, id=id)
+    return render(request, "team_management/edit.html", {'member': member})
 
 
-def editEmployee(request, id):
-    employee = get_object_or_404(Employee, id=id)
-    return render(request, "team_management/edit.html", {'employee': employee})
-
-
-def createEmployee(request):
+def createMember(request):
     if request.method == "POST":
         firstname = request.POST.get("firstname")
         lastname = request.POST.get("lastname")
         email = request.POST.get("email")
         role = request.POST.get("role")
-        salary = request.POST.get("salary")
-        employee = Employee()
-        employee.lastname = lastname
-        employee.firstname = firstname
-        employee.email = email
-        employee.role = role
-        employee.salary = salary
-        employee.save()
+        phone_number = request.POST.get("phone_number")
+
+        member = Member()
+        member.lastname = lastname
+        member.firstname = firstname
+        member.email = email
+        member.phone_number = phone_number
+        member.role = role
+        member.save()
         return redirect('index')
     return redirect('index')
 
 
 def edit(request, id):
-    employee = get_object_or_404(Employee, id=id)
+    member = get_object_or_404(Member, id=id)
 
     if request.method == "POST":
         if request.POST.get('action') == "delete":
-            employee.delete()
+            member.delete()
             return redirect('index')
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
@@ -55,11 +50,11 @@ def edit(request, id):
         email = request.POST.get('email')
         role = request.POST.get('role')
 
-        employee.firstname = firstname
-        employee.lastname = lastname
-        employee.email = email
-        employee.phone_number = phone_number
-        employee.role = role
-        employee.save()
+        member.firstname = firstname
+        member.lastname = lastname
+        member.email = email
+        member.phone_number = phone_number
+        member.role = role
+        member.save()
         
         return redirect('index')
