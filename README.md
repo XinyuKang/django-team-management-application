@@ -1,6 +1,8 @@
 # django-team-management-application
 Full-Stack take-home assignment
 
+
+
 # pre-requirements:
 ```
 pip install python  # python 3.5+
