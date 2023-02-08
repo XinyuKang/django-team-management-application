@@ -12,41 +12,43 @@
 
 <body>
 
-    <form method="POST" action="{% url 'createEmployee' %}">
-        {% csrf_token %}
 
-        <h1>Add a team member</h1>
+ 
+    <form action="{% url 'edit' id=employee.id %}" method="POST">
+        {% csrf_token %}
+        <center>
+        <h1>Edit a team member</h1>
 
             <div style="margin: 10px auto; width:50%">
                 <label>First Name</label>
-                <input type="text" name="firstname" placeholder="Olivia">
+                <input type="text" name="firstname" value="{{employee.firstname}}">
             </div>
 
             <div style="margin: 10px auto; width:50%">
                 <label>Last Name</label>
-                <input type="text" name="lastname" placeholder="Kang">
+                <input type="text" name="lastname" value="{{employee.lastname}}">
             </div>
 
             <div style="margin: 10px auto; width:50%">
                 <label>Email</label>
-                <input type="email" name="email" placeholder="xinyukang@instawork.com">
+                <input type="email" name="email" value="{{employee.email}}">
             </div>
 
             <div style="margin: 10px auto; width:50%">
                 <label>Role</label>
-                <input type="text" name="role" placeholder="Regular">
+                <input type="text" name="role" value="{{employee.role}}">
             </div>
 
             <div style="margin: 10px auto; width:50%">
                 <label>Salary</label>
-                <input type="number" name="salary" placeholder="30">
+                <input type="number" name="salary" value="{{employee.salary}}">
             </div>
 
             <div style="margin: 10px auto; width:50%">
-                <input type="submit" value="save" style="background-color: cornflowerblue; color: white">
+                <input type="submit" value="update" style="background-color: cornflowerblue; color: white">
             </div>
 
+        </center>
     </form>
-
 </body>
 </html>
