@@ -34,8 +34,11 @@
         </div>
 
         <div style="margin: 10px auto; width:50%">
-            <label>Role</label>
-            <input type="text" name="role" placeholder="Regular">
+        <label>Role</label>
+        <select name="role">
+            <option value="REGULAR" selected>Regular - Can't delete members</option>
+            <option value="ADMIN">Admin - Can delete members</option>
+        </select>
         </div>
 
         <div style="margin: 10px auto; width:50%">

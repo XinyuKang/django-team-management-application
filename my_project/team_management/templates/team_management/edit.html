@@ -35,9 +35,19 @@
                 <input type="email" name="email" value="{{employee.email}}">
             </div>
 
-            <div style="margin: 10px auto; width:50%">
+            <!-- <div style="margin: 10px auto; width:50%">
                 <label>Role</label>
                 <input type="text" name="role" value="{{employee.role}}">
+            </div> -->
+
+            <div style="margin: 10px auto; width:50%">
+                <label>Role</label>
+                <select name="role">
+                    <option value="REGULAR" {% if employee.role == 'REGULAR' %} selected {% endif %}>Regular - Can't delete members</option>
+                    <option value="ADMIN" {% if employee.role == 'ADMIN' %} selected {% endif %}>Admin - Can delete members</option>
+                    <!-- <option value="REGULAR" selected>Regular - Can't delete members</option>
+                    <option value="ADMIN">Admin - Can delete members</option> -->
+                </select>
             </div>
 
             <div style="margin: 10px auto; width:50%">
