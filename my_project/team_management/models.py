@@ -16,6 +16,4 @@ class Member(models.Model):
     email = models.EmailField(max_length=200)
 
     role = models.CharField(max_length=200, choices=role_choices, default="REGULAR")
-
-    salary = models.IntegerField(null=True)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
