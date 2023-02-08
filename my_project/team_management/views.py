@@ -51,10 +51,15 @@ def edit(request, id):
             return redirect('index')
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
+        phone_number = request.POST.get('phone_number')
         email = request.POST.get('email')
+        role = request.POST.get('role')
+
         employee.firstname = firstname
         employee.lastname = lastname
         employee.email = email
+        employee.phone_number = phone_number
+        employee.role = role
         employee.save()
         
         return redirect('index')

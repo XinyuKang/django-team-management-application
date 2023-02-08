@@ -12,28 +12,36 @@
 
 
 <body>
-    <a href="showEmployeeForm" style="text-decoration:none">
-        <span>&#43;</span>
-    </a>
-    <h1>Team members</h1>
-    <h2>You have {{ employees|length }} team members.</h2>
-    
-    {% for employee in employees %}
-
-    <div>
-        <!-- <span>{{ employee.id }}</span> -->
-        <span>
-            <a href="editEmployee/{{ employee.id }}" style="text-decoration:none">
-            <h4> {{ employee.firstname }} {{ employee.lastname }} {% if employee.role == 'ADMIN' %} (admin) {% endif %}</h4>
-            </a>
-        </span>
-        <span>{{ employee.email }}</span>
-        <span>{{ employee.salary }}</span>
-        <!-- <span><a href="editEmployee/{{ employee.id }}">Edit</a></span> -->
-
+    <div class="main-container">
+        <div class="row">
+            
+            <h1>Team members  <span class="plus"><a href="showEmployeeForm" style="text-decoration:none" >
+                <span>&#43;</span>
+            </a></span> </h1>
+            <h3>You have {{ employees|length }} team members.</h3>
+        </div>
     </div>
 
+
+
+    {% for employee in employees %}
+    <div class="container">
+        <div class="row">
+            <!-- <span>{{ employee.id }}</span> -->
+
+            <a href="editEmployee/{{ employee.id }}" style="text-decoration:none">
+                <div class="name"> {{ employee.firstname }} {{ employee.lastname }} {% if employee.role == 'ADMIN' %} (admin) {% endif %}</div>
+            </a>
+            <div class="detail">{{ employee.phone_number }}</div>
+            <div class="detail">{{ employee.email }}</div>
+            <!-- <span>{{ employee.salary }}</span> -->
+            <!-- <span><a href="editEmployee/{{ employee.id }}">Edit</a></span> -->
+
+        </div>
+    </div>
     {% endfor %}
+
+
 
 
 </body>

@@ -16,37 +16,47 @@
     <form method="POST" action="{% url 'createEmployee' %}">
         {% csrf_token %}
 
-        <h1>Add a team member</h1>
+        <div class="main-container">
+            <h1>Add a team member</h1>
+            <h3>Set email, phone number and role.</h3>
+        </div>
+    
 
-        <div style="margin: 10px auto; width:50%">
-            <label>First Name</label>
+        <h4 class="sub-container">Info</h4>
+        <div class="container">
+            <label>First Name: </label>
             <input type="text" name="firstname" placeholder="Olivia">
         </div>
 
-        <div style="margin: 10px auto; width:50%">
-            <label>Last Name</label>
+        <div class="container">
+            <label>Last Name: </label>
             <input type="text" name="lastname" placeholder="Kang">
         </div>
 
-        <div style="margin: 10px auto; width:50%">
-            <label>Email</label>
+        <div class="container">
+            <label>Email: </label>
             <input type="email" name="email" placeholder="xinyukang@instawork.com">
         </div>
 
-        <div style="margin: 10px auto; width:50%">
-        <label>Role</label>
+        <div class="container">
+            <label>Phone Number: </label>
+            <input type="phone" name="phone_number" placeholder="415-310-1619">
+        </div>
+
+        <h4 class="sub-container">Role</h4>
+        <div class="container">
         <select name="role">
             <option value="REGULAR" selected>Regular - Can't delete members</option>
             <option value="ADMIN">Admin - Can delete members</option>
         </select>
         </div>
 
-        <div style="margin: 10px auto; width:50%">
+        <!-- <div class="container">
             <label>Salary</label>
             <input type="number" name="salary" placeholder="30">
-        </div>
+        </div> -->
 
-        <div style="margin: 10px auto; width:50%">
+        <div class="container" style="justify-content: center; margin-left: 0">
             <input type="submit" value="save" style="background-color: cornflowerblue; color: white">
         </div>
 
