@@ -21,13 +21,15 @@
     {% for employee in employees %}
 
     <div>
-        <span>{{ employee.id }}</span>
+        <!-- <span>{{ employee.id }}</span> -->
         <span>
+            <a href="editEmployee/{{ employee.id }}" style="text-decoration:none">
             <h4> {{ employee.firstname }} {{ employee.lastname }} {% if employee.role == 'ADMIN' %} (admin) {% endif %}</h4>
+            </a>
         </span>
         <span>{{ employee.email }}</span>
         <span>{{ employee.salary }}</span>
-        <span><a href="editEmployee/{{ employee.id }}">Edit</a></span>
+        <!-- <span><a href="editEmployee/{{ employee.id }}">Edit</a></span> -->
 
     </div>
 
