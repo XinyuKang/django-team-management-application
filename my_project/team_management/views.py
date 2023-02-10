@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.views.generic.list import ListView
 from .models import Member
 # Create your views here.
 
@@ -8,6 +8,8 @@ def index(request):
     members = Member.objects.all()
     return render(request, 'team_management/index.html', {'members': members})
 
+# class MemberList(ListView):
+#     model = Member
 
 def showMember(request):
     return render(request, "team_management/show.html")
