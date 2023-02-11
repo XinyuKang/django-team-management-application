@@ -1,6 +1,7 @@
 from django.db import models
 from phone_field import PhoneField
 from django.core.validators import EmailValidator
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
@@ -17,4 +18,4 @@ class Member(models.Model):
     email = models.EmailField(max_length=200, blank=False, unique=True,validators=[EmailValidator])
 
     role = models.CharField(max_length=200, choices=role_choices, default="REGULAR")
-    phone_number = PhoneField(blank=False, unique=True)
+    phone_number = PhoneField(blank=False, unique=True, E164_only=True) 
