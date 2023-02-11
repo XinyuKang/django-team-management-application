@@ -1,11 +1,10 @@
 from django.urls import path
 from . import views
+from .views import MemberCreate, MemberEdit, MemberList
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('showMember', views.showMember, name="showMember"),
-    path('createMember', views.createMember, name="createMember"),
-    path('edit/<int:id>/', views.edit, name="edit"),
-    path('editMember/<int:id>/', views.editMember, name="editMember")
+    path('', MemberList.as_view(), name="index"),
+    path('createMember', MemberCreate.as_view(), name="createMember"),
+    path('editMember/<int:id>/', MemberEdit.as_view(), name="editMember")
 ]

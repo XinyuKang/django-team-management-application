@@ -15,51 +15,23 @@
 
 
 
-    <form action="{% url 'edit' id=member.id %}" method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
    
             <div class="main-container">
                 <h1>Edit a team member</h1>
                 <h3>Edit email, phone number and role.</h3>
             </div>
-            
 
-            <h4 class="sub-container">Info</h4>
-            <div class="container">
-                <label>First Name: </label>
-                <input type="text" name="firstname" value="{{member.firstname}}">
-            </div>
+            <center>
+                {{ form.as_p }}
+            </center>
 
             <div class="container">
-                <label>Last Name: </label>
-                <input type="text" name="lastname" value="{{member.lastname}}">
-            </div>
-
-
-            <div class="container">
-                <label>Email: </label>
-                <input type="email" name="email" value="{{member.email}}">
-            </div>
-
-            <div class="container">
-                <label>Phone Number: </label>
-                <input type="phone" name="phone_number" value="{{member.phone_number}}">
-            </div>
-
-
-            <h4 class="sub-container">Role</h4>
-            <div class="container">
-                <label>Role: </label>
-                <select name="role">
-                    <option value="REGULAR" {% if member.role == 'REGULAR' %} selected {% endif %}>Regular - Can't delete members</option>
-                    <option value="ADMIN" {% if member.role == 'ADMIN' %} selected {% endif %}>Admin - Can delete members</option>
-                </select>
-            </div>
-
-            <div class="container">
-                <input type="submit" name="action" value="delete"
-                    style="background-color: rgb(243, 137, 153); color: white; margin-left: 40">
-                <input type="submit" value="save" style="background-color: cornflowerblue; color: white; margin-left: 120px">
+                <a href="{% url 'index' %}" style="margin-right: 10%;">back</a>
+                <input type="submit" name="confirm_delete" value="delete"
+                    style="background-color: rgb(243, 137, 153); color: white">
+                <input type="submit" name="confirm_post" value="save" style="background-color: cornflowerblue; color: white; margin-left: 60px">
             </div>
 
     </form>
