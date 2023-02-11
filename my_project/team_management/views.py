@@ -1,62 +1,43 @@
-from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, DeletionMixin
+from django.urls import reverse_lazy
 from .models import Member
-# Create your views here.
+from .forms import MemberForm
+from django.http import HttpResponseRedirect
+
+class MemberList(ListView):
+    model = Member
+    template_name = 'team_management/index.html'
+    context_object_name = 'members'
 
 
-def index(request):
-    members = Member.objects.all()
-    return render(request, 'team_management/index.html', {'members': members})
+class MemberCreate(CreateView):
+    model = Member
+    form_class = MemberForm
+    template_name = "team_management/create.html"
+    success_url = reverse_lazy('index')
 
-# class MemberList(ListView):
-#     model = Member
+class MemberEdit(UpdateView, DeletionMixin):
+    model = Member
+    form_class = MemberForm
+    template_name = "team_management/edit.html"
+    context_object_name = 'member'
+    pk_url_kwarg = 'id'
+    success_url = reverse_lazy('index')
 
-def showMember(request):
-    return render(request, "team_management/show.html")
+    def post(self, request, id, *args, **kwargs):
+        if "confirm_delete" in self.request.POST:
+            return self.delete(request, *args, **kwargs)
+        else:
+            return super(MemberEdit, self).post(request)
 
+    
 
-def editMember(request, id):
-    member = get_object_or_404(Member, id=id)
-    return render(request, "team_management/edit.html", {'member': member})
-
-
-def createMember(request):
-    if request.method == "POST":
-        firstname = request.POST.get("firstname")
-        lastname = request.POST.get("lastname")
-        email = request.POST.get("email")
-        role = request.POST.get("role")
-        phone_number = request.POST.get("phone_number")
-
-        member = Member()
-        member.lastname = lastname
-        member.firstname = firstname
-        member.email = email
-        member.phone_number = phone_number
-        member.role = role
-        member.save()
-        return redirect('index')
-    return redirect('index')
+    
 
 
-def edit(request, id):
-    member = get_object_or_404(Member, id=id)
-
-    if request.method == "POST":
-        if request.POST.get('action') == "delete":
-            member.delete()
-            return redirect('index')
-        firstname = request.POST.get('firstname')
-        lastname = request.POST.get('lastname')
-        phone_number = request.POST.get('phone_number')
-        email = request.POST.get('email')
-        role = request.POST.get('role')
-
-        member.firstname = firstname
-        member.lastname = lastname
-        member.email = email
-        member.phone_number = phone_number
-        member.role = role
-        member.save()
-        
-        return redirect('index')
+class MemberDelete(DeleteView):
+    model = Member
+    context_object_name = 'member'
+    template_name = "team_management/edit.html"
+    success_url = reverse_lazy('index')
